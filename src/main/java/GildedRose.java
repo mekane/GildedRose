@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class GildedRose {
 
 	private static List<Item> items = null;
@@ -13,17 +12,97 @@ public class GildedRose {
 		
         System.out.println("OMGHAI!");
 		
-        items = new ArrayList<Item>();
+        initDefaultItems();
+
+        updateQuality();
+        
+}
+
+	
+	private static void initDefaultItems() {
+		items = new ArrayList<Item>();
         items.add(new Item("+5 Dexterity Vest", 10, 20));
         items.add(new Item("Aged Brie", 2, 0));
         items.add(new Item("Elixir of the Mongoose", 5, 7));
         items.add(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
         items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
         items.add(new Item("Conjured Mana Cake", 3, 6));
-
-        updateQuality();
-}
-
+	}
+	
+	public int[] getInitialQualityValues(){
+		initDefaultItems();
+	
+		int[] result = new int[items.size()];
+		for (int i = 0; i < items.size(); i++){
+			result[i] = items.get(i).getQuality();
+		}
+		return result;
+	}
+	
+	public int[] getInitialSellInValues(){
+		initDefaultItems();
+		
+		int[] result = new int[items.size()];
+		for (int i = 0; i < items.size(); i++){
+			result[i] = items.get(i).getSellIn();
+		}
+		return result;
+	}
+	
+	public int[] getQualityValuesAfterOneUpdate(){
+		initDefaultItems();
+		updateQuality();
+		
+		int[] result = new int[items.size()];
+		for (int i = 0; i < items.size(); i++){
+			result[i] = items.get(i).getQuality();
+		}
+		
+		return result;
+	}
+	
+	public int[] getSellInValuesAfterOneUpdate(){
+		initDefaultItems();
+		updateQuality();
+		
+		int[] result = new int[items.size()];
+		for (int i = 0; i < items.size(); i++){
+			result[i] = items.get(i).getSellIn();
+		}
+		return result;
+	}
+	
+	public int[] getQualityValuesAfterN_Updates( int numberOfUpdates ){
+		initDefaultItems();
+		
+        for ( int runs = numberOfUpdates; runs > 0 ; runs-- ){
+        	updateQuality();
+        }
+		
+		int[] result = new int[items.size()];
+		for (int i = 0; i < items.size(); i++){
+			result[i] = items.get(i).getQuality();
+		}
+		
+		return result;
+	}
+	
+	public int[] getSellInValuesAfterN_Updates( int numberOfUpdates){
+		initDefaultItems();
+		
+        for ( int runs = numberOfUpdates; runs > 0 ; runs-- ){
+        	updateQuality();
+        }
+		
+		int[] result = new int[items.size()];
+		for (int i = 0; i < items.size(); i++){
+			result[i] = items.get(i).getSellIn();
+		}
+		return result;
+	}
+	
+	
+	
 
 	
     public static void updateQuality()
