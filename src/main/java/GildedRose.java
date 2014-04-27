@@ -15,8 +15,8 @@ public class GildedRose {
         initDefaultItems();
 
         updateQuality();
-        
-}
+	}
+
 
 	
 	private static void initDefaultItems() {
@@ -29,7 +29,21 @@ public class GildedRose {
         items.add(new Item("Conjured Mana Cake", 3, 6));
 	}
 	
-	public int[] getInitialQualityValues(){
+	private static void printQualityValues(){
+		System.out.println("Quality Values:");
+		for ( Item i : items ){
+			System.out.println(i.getName()+": "+i.getQuality());
+		}
+	}
+	
+	private static void printSellInValues(){
+		System.out.println("SellIn Values:");
+		for ( Item i : items ){
+			System.out.println(i.getName()+": "+i.getSellIn());
+		}
+	}
+	
+	public static int[] getInitialQualityValues(){
 		initDefaultItems();
 	
 		int[] result = new int[items.size()];
@@ -39,7 +53,7 @@ public class GildedRose {
 		return result;
 	}
 	
-	public int[] getInitialSellInValues(){
+	public static int[] getInitialSellInValues(){
 		initDefaultItems();
 		
 		int[] result = new int[items.size()];
@@ -49,7 +63,7 @@ public class GildedRose {
 		return result;
 	}
 	
-	public int[] getQualityValuesAfterOneUpdate(){
+	public static int[] getQualityValuesAfterOneUpdate(){
 		initDefaultItems();
 		updateQuality();
 		
@@ -61,7 +75,7 @@ public class GildedRose {
 		return result;
 	}
 	
-	public int[] getSellInValuesAfterOneUpdate(){
+	public static int[] getSellInValuesAfterOneUpdate(){
 		initDefaultItems();
 		updateQuality();
 		
@@ -72,7 +86,7 @@ public class GildedRose {
 		return result;
 	}
 	
-	public int[] getQualityValuesAfterN_Updates( int numberOfUpdates ){
+	public static int[] getQualityValuesAfterN_Updates( int numberOfUpdates ){
 		initDefaultItems();
 		
         for ( int runs = numberOfUpdates; runs > 0 ; runs-- ){
@@ -87,7 +101,7 @@ public class GildedRose {
 		return result;
 	}
 	
-	public int[] getSellInValuesAfterN_Updates( int numberOfUpdates){
+	public static int[] getSellInValuesAfterN_Updates( int numberOfUpdates){
 		initDefaultItems();
 		
         for ( int runs = numberOfUpdates; runs > 0 ; runs-- ){
