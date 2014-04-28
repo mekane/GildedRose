@@ -67,6 +67,13 @@ public class GildedRoseTest {
 		assertEquals( 19, i.getQuality() );
 	}
 	
+	@Test
+	public void normalItemsDegradeTwoQualityAfterSellInDate(){
+		UpdatableItem i = new UpdatableItem("Name", 0, 20);
+		i.updateQuality();
+		assertEquals( 18, i.getQuality() );
+	}
+	
 	//Legendary
 	@Test
 	public void legendaryItemsDoNotDegradeQuality(){

@@ -13,8 +13,4 @@ public class CheeseItem extends UpdatableItem {
 			this.setQuality( Math.min(50, this.quality + 1));
 		}
 	}
-	
-	public void updateSellIn(){
-		this.setSellIn( this.sellIn - 1);
-	}
 }

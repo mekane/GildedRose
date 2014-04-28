@@ -125,32 +125,8 @@ public class GildedRose {
     {
         for (int i = 0; i < items.size(); i++)
         {
-            items.get(i).updateQuality();                    
-
+            items.get(i).updateQuality();
         	items.get(i).updateSellIn();
-
-        	
-            if (items.get(i).getSellIn() < 0)
-            {
-                if (!"Aged Brie".equals(items.get(i).getName()))
-                {
-                    if (!"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName()))
-                    {
-                        if (items.get(i).getQuality() > 0)
-                        {
-                            if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName()))
-                            {
-                                items.get(i).setQuality(items.get(i).getQuality() - 1);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        items.get(i).setQuality(items.get(i).getQuality() - items.get(i).getQuality());
-                    }
-                }
-
-            }
         }
     }
 

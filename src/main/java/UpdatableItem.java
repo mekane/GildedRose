@@ -5,7 +5,12 @@ public class UpdatableItem extends Item {
 	}
 	
 	public void updateQuality(){
-		this.setQuality( java.lang.Math.max(this.quality-1, 0) );
+		if ( this.getSellIn() < 1 ){
+			this.setQuality( java.lang.Math.max(this.quality-2, 0) );
+		}
+		else {
+			this.setQuality( java.lang.Math.max(this.quality-1, 0) );
+		}
 	}
 	
 	public void updateSellIn(){
