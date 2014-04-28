@@ -91,11 +91,19 @@ public class GildedRoseTest {
 	}
 	
 	@Test
+	public void cheeseItemsQualityIncreasesByTwoAfterSellinDate(){
+		CheeseItem i = new CheeseItem("Name", 0, 20);
+		i.updateQuality();
+		assertEquals( 22, i.getQuality() );
+	}
+	
+	@Test
 	public void cheeseItemsQualityCannotGoAboveFifty(){
 		CheeseItem i = new CheeseItem("Name", 20, 50);
 		i.updateQuality();
 		assertEquals( 50, i.getQuality() );
 	}
+
 	
 	//Backstage Passes
 	@Test

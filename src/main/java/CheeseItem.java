@@ -5,7 +5,13 @@ public class CheeseItem extends UpdatableItem {
 	}
 	
 	public void updateQuality(){
-		this.setQuality( Math.min(50, this.quality + 1));
+		
+		if ( this.getSellIn() < 1 ){
+			this.setQuality( Math.min(50, this.quality + 2));
+		}
+		else {
+			this.setQuality( Math.min(50, this.quality + 1));
+		}
 	}
 	
 	public void updateSellIn(){
