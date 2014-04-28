@@ -157,10 +157,10 @@ public class GildedRoseTest {
 	}
 	
 	@Test
-	public void normalItemsDegradeFourQualityAfterSellInDate(){
-		UpdatableItem i = new UpdatableItem("Name", 0, 20);
+	public void conjuredItemsDegradeFourQualityAfterSellInDate(){
+		ConjuredItem i = new ConjuredItem("Name", 0, 20);
 		i.updateQuality();
-		assertEquals( 18, i.getQuality() );
+		assertEquals( 16, i.getQuality() );
 	}
 }
 
