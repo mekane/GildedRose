@@ -26,7 +26,7 @@ public class GildedRose {
         items.add(new UpdatableItem("+5 Dexterity Vest", 10, 20));
         items.add(new UpdatableItem("Aged Brie", 2, 0));
         items.add(new UpdatableItem("Elixir of the Mongoose", 5, 7));
-        items.add(new UpdatableItem("Sulfuras, Hand of Ragnaros", 0, 80));
+        items.add(new LegendaryItem("Sulfuras, Hand of Ragnaros", 0, 80));
         items.add(new UpdatableItem("Backstage passes to a TAFKAL80ETC concert", 15, 20));
         items.add(new UpdatableItem("Conjured Mana Cake", 3, 6));
 	}
@@ -129,10 +129,7 @@ public class GildedRose {
             {
                 if (items.get(i).getQuality() > 0)
                 {
-                    if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName()))
-                    {
-                        items.get(i).updateQuality();
-                    }
+                    items.get(i).updateQuality();                    
                 }
             }
             else

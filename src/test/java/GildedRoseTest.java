@@ -65,5 +65,12 @@ public class GildedRoseTest {
 		i.updateQuality();
 		Assert.assertEquals( 19, i.getQuality() );
 	}
+	
+	@Test
+	public void legendaryItemsDoNotDegradeQuality(){
+		LegendaryItem i = new LegendaryItem("Name", 20, 20);
+		i.updateQuality();
+		Assert.assertEquals( 20, i.getQuality() );		
+	}
 }
 
