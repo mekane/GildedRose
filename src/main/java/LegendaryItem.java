@@ -9,6 +9,6 @@ public class LegendaryItem extends UpdatableItem {
 	}
 	
 	public void updateSellIn(){
-		this.setSellIn( this.sellIn - 1);
+		//noop
 	}
 }
