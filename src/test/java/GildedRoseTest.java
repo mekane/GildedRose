@@ -1,6 +1,7 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class GildedRoseTest {
@@ -66,6 +67,7 @@ public class GildedRoseTest {
 		assertEquals( 19, i.getQuality() );
 	}
 	
+	//Legendary
 	@Test
 	public void legendaryItemsDoNotDegradeQuality(){
 		LegendaryItem i = new LegendaryItem("Name", 20, 20);
@@ -74,10 +76,61 @@ public class GildedRoseTest {
 	}
 	
 	@Test
+	public void legendaryItemsDoNotLowerSellIn(){
+		LegendaryItem i = new LegendaryItem("Name", 20, 20);
+		i.updateQuality();
+		assertEquals( 20, i.getSellIn() );
+	}
+	
+	//Cheese
+	@Test
 	public void cheeseItemsIncreaseInQuality(){
-		CheeseItem i = new CheeseItem("", 20, 20);
+		CheeseItem i = new CheeseItem("Name", 20, 20);
 		i.updateQuality();
 		assertEquals( 21, i.getQuality() );
+	}
+	
+	@Test
+	public void cheeseItemsQualityCannotGoAboveFifty(){
+		CheeseItem i = new CheeseItem("Name", 20, 50);
+		i.updateQuality();
+		assertEquals( 50, i.getQuality() );
+	}
+	
+	//Backstage Passes
+	@Test
+	public void backstagePassItemsIncreaseQualityWithTenDaysOrMoreToSell(){
+		BackstagePassItem i = new BackstagePassItem("Name", 20, 20);
+		i.updateQuality();
+		assertEquals( 21, i.getQuality() );
+	}
+	
+	@Test
+	public void backstagePassItemsIncreaseQualityByTwoWithTenDaysOrLessToSell(){
+		BackstagePassItem i = new BackstagePassItem("Name", 10, 20);
+		i.updateQuality();
+		assertEquals( 22, i.getQuality() );
+	}
+	
+	@Test
+	public void backstagePassItemsIncreaseQualityByThreeWithFiveDaysOrLessTosell(){
+		BackstagePassItem i = new BackstagePassItem("Name", 5, 20);
+		i.updateQuality();
+		assertEquals( 23, i.getQuality() );
+	}
+
+	@Test
+	public void backstagePassItemsQualityGoesToZeroWithNoDaysToSell(){
+		BackstagePassItem i = new BackstagePassItem("Name", 0, 20);
+		i.updateQuality();
+		assertEquals( 0, i.getQuality() );
+	}
+
+	@Test
+	public void backstagePassItemsQualityCannotGoAboveFifty(){
+		BackstagePassItem i = new BackstagePassItem("Name", 20, 50);
+		i.updateQuality();
+		assertEquals( 50, i.getQuality() );
 	}
 }
 

@@ -27,7 +27,7 @@ public class GildedRose {
         items.add(new CheeseItem("Aged Brie", 2, 0));
         items.add(new UpdatableItem("Elixir of the Mongoose", 5, 7));
         items.add(new LegendaryItem("Sulfuras, Hand of Ragnaros", 0, 80));
-        items.add(new UpdatableItem("Backstage passes to a TAFKAL80ETC concert", 15, 20));
+        items.add(new BackstagePassItem("Backstage passes to a TAFKAL80ETC concert", 15, 20));
         items.add(new UpdatableItem("Conjured Mana Cake", 3, 6));
 	}
 	
@@ -125,39 +125,11 @@ public class GildedRose {
     {
         for (int i = 0; i < items.size(); i++)
         {
-            if ( !"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName())) 
-            {
-                items.get(i).updateQuality();                    
-            }
-            else
-            {
-                if (items.get(i).getQuality() < 50)
-                {
-                    items.get(i).setQuality(items.get(i).getQuality() + 1);
-
-                    if ("Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName()))
-                    {
-                        if (items.get(i).getSellIn() < 11)
-                        {
-                            if (items.get(i).getQuality() < 50)
-                            {
-                                items.get(i).setQuality(items.get(i).getQuality() + 1);
-                            }
-                        }
-
-                        if (items.get(i).getSellIn() < 6)
-                        {
-                            if (items.get(i).getQuality() < 50)
-                            {
-                                items.get(i).setQuality(items.get(i).getQuality() + 1);
-                            }
-                        }
-                    }
-                }
-            }
+            items.get(i).updateQuality();                    
 
         	items.get(i).updateSellIn();
 
+        	
             if (items.get(i).getSellIn() < 0)
             {
                 if (!"Aged Brie".equals(items.get(i).getName()))
