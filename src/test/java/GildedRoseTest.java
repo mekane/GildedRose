@@ -49,5 +49,21 @@ public class GildedRoseTest {
 		int[] updateValues = GildedRose.getSellInValuesAfterN_Updates(10);
 		Assert.assertArrayEquals(knownValues, updateValues);
 	}
+	
+	
+	//New Unit Tests
+	@Test
+	public void normalItemsLowerSellByAfterOneUpdate(){
+		UpdatableItem i = new UpdatableItem("Name", 20, 20);
+		i.updateSellIn();
+		Assert.assertEquals( 19, i.getSellIn() );
+	}
+	
+	@Test
+	public void normalItemsDegradeOneQualityAfterOneUpdate() {
+		UpdatableItem i = new UpdatableItem("Name", 20, 20);
+		i.updateQuality();
+		Assert.assertEquals( 19, i.getQuality() );
+	}
 }
 
