@@ -16,7 +16,7 @@ public class GildedRoseTest {
 	
 	@Test
 	public void verifyNoQualityRegressionAfterOneUpdate(){
-		int[] knownValues = new int[]{19,1,6,80,21,5};
+		int[] knownValues = new int[]{19,1,6,80,21,4};
 		int[] updateValues = GildedRose.getQualityValuesAfterOneUpdate();
 		assertArrayEquals(knownValues, updateValues);
 	}
@@ -146,6 +146,21 @@ public class GildedRoseTest {
 		BackstagePassItem i = new BackstagePassItem("Name", 20, 50);
 		i.updateQuality();
 		assertEquals( 50, i.getQuality() );
+	}
+	
+	//Conjured
+	@Test
+	public void conjuredItemsDegradeTwoQuality() {
+		ConjuredItem i = new ConjuredItem("Name", 20, 20);
+		i.updateQuality();
+		assertEquals( 18, i.getQuality() );
+	}
+	
+	@Test
+	public void normalItemsDegradeFourQualityAfterSellInDate(){
+		UpdatableItem i = new UpdatableItem("Name", 0, 20);
+		i.updateQuality();
+		assertEquals( 18, i.getQuality() );
 	}
 }
 
