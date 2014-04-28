@@ -24,7 +24,7 @@ public class GildedRoseTest {
 	public void verifyNoQualityRegressionAfterTenUpdates(){
 		int[] knownValues = new int[]{10,18,0,80,35,0};
 		int[] updateValues = GildedRose.getQualityValuesAfterN_Updates(10);
-		Assert.assertArrayEquals(knownValues, updateValues); 
+		assertArrayEquals(knownValues, updateValues); 
 	}
 	
 	
@@ -47,7 +47,7 @@ public class GildedRoseTest {
 	public void verifyNoSellInRegressionAfterTenUpdates(){
 		int[] knownValues = new int[]{0,-8,-5,0,5,-7};
 		int[] updateValues = GildedRose.getSellInValuesAfterN_Updates(10);
-		Assert.assertArrayEquals(knownValues, updateValues);
+		assertArrayEquals(knownValues, updateValues);
 	}
 	
 	
@@ -56,21 +56,28 @@ public class GildedRoseTest {
 	public void normalItemsLowerSellByAfterOneUpdate(){
 		UpdatableItem i = new UpdatableItem("Name", 20, 20);
 		i.updateSellIn();
-		Assert.assertEquals( 19, i.getSellIn() );
+		assertEquals( 19, i.getSellIn() );
 	}
 	
 	@Test
 	public void normalItemsDegradeOneQualityAfterOneUpdate() {
 		UpdatableItem i = new UpdatableItem("Name", 20, 20);
 		i.updateQuality();
-		Assert.assertEquals( 19, i.getQuality() );
+		assertEquals( 19, i.getQuality() );
 	}
 	
 	@Test
 	public void legendaryItemsDoNotDegradeQuality(){
 		LegendaryItem i = new LegendaryItem("Name", 20, 20);
 		i.updateQuality();
-		Assert.assertEquals( 20, i.getQuality() );		
+		assertEquals( 20, i.getQuality() );		
+	}
+	
+	@Test
+	public void cheeseItemsIncreaseInQuality(){
+		CheeseItem i = new CheeseItem("", 20, 20);
+		i.updateQuality();
+		assertEquals( 21, i.getQuality() );
 	}
 }
 

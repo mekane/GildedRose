@@ -24,7 +24,7 @@ public class GildedRose {
 	private static void initDefaultItems() {
 		items = new ArrayList<UpdatableItem>();
         items.add(new UpdatableItem("+5 Dexterity Vest", 10, 20));
-        items.add(new UpdatableItem("Aged Brie", 2, 0));
+        items.add(new CheeseItem("Aged Brie", 2, 0));
         items.add(new UpdatableItem("Elixir of the Mongoose", 5, 7));
         items.add(new LegendaryItem("Sulfuras, Hand of Ragnaros", 0, 80));
         items.add(new UpdatableItem("Backstage passes to a TAFKAL80ETC concert", 15, 20));
@@ -125,7 +125,7 @@ public class GildedRose {
     {
         for (int i = 0; i < items.size(); i++)
         {
-            if ((!"Aged Brie".equals(items.get(i).getName())) && !"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName())) 
+            if ( !"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName())) 
             {
                 items.get(i).updateQuality();                    
             }
