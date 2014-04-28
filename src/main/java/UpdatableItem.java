@@ -5,7 +5,7 @@ public class UpdatableItem extends Item {
 	}
 	
 	public void updateQuality(){
-		this.setQuality( this.quality - 1 );
+		this.setQuality( java.lang.Math.max(this.quality-1, 0) );
 	}
 	
 	public void updateSellIn(){
